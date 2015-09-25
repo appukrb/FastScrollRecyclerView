@@ -91,7 +91,8 @@ public class FastScrollRecyclerView extends RecyclerView {
                     int positionInData = 0;
                     if( ((FastScrollRecyclerViewInterface)getAdapter()).getMapIndex().containsKey(section.toUpperCase()) )
                         positionInData = ((FastScrollRecyclerViewInterface)getAdapter()).getMapIndex().get(section.toUpperCase());
-                    this.scrollToPosition(positionInData);
+                    LinearLayoutManager llm = (LinearLayoutManager) getLayoutManager();
+                    llm.scrollToPositionWithOffset(positionInData,20);
                     FastScrollRecyclerView.this.invalidate();
                 }
                 break;
@@ -110,7 +111,8 @@ public class FastScrollRecyclerView extends RecyclerView {
                     int positionInData = 0;
                     if(((FastScrollRecyclerViewInterface)getAdapter()).getMapIndex().containsKey(section.toUpperCase()) )
                         positionInData = ((FastScrollRecyclerViewInterface)getAdapter()).getMapIndex().get(section.toUpperCase());
-                    this.scrollToPosition(positionInData);
+                     LinearLayoutManager llm = (LinearLayoutManager) getLayoutManager();
+                    llm.scrollToPositionWithOffset(positionInData,20);
                     FastScrollRecyclerView.this.invalidate();
 
                 }
@@ -140,5 +142,10 @@ public class FastScrollRecyclerView extends RecyclerView {
         }
 
 
+    }
+    
+      @Override
+    public LayoutManager getLayoutManager() {
+        return super.getLayoutManager();
     }
 }
